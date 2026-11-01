@@ -32,6 +32,9 @@ All notable changes to Mew & Brew website will be documented in this file.
 - **.htaccess** dengan compression, caching, dan security headers
 - **README.md** dengan dokumentasi lengkap
 - **CHANGELOG.md** untuk tracking versi
+- **LICENSE** dengan lisensi terpisah: kode di bawah MIT, aset brand tetap
+  proprietary (logo, maskot kucing, label produk, foto produk, nama "Mew & Brew")
+- **.gitignore** untuk mengecualikan file junk OS dan editor
 
 ### 🎨 Improved
 - Form data sekarang auto-save ke LocalStorage

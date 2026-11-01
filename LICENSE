@@ -1,0 +1,79 @@
+Lisensi Mew & Brew
+==================
+
+Copyright (c) 2026 Mew & Brew. All rights reserved.
+
+Repositori ini berisi dua kategori karya dengan ketentuan yang BERBEDA.
+Baca bagian yang sesuai sebelum memakai isi repositori ini.
+
+
+--------------------------------------------------------------------------------
+1. KODE SUMBER (HTML, CSS, JavaScript)
+--------------------------------------------------------------------------------
+
+Seluruh kode sumber dalam repositori ini — termasuk tetapi tidak terbatas pada
+`index.html`, `404.html`, `css/style.css`, `js/main.js`, `manifest.json`,
+`.htaccess`, `robots.txt`, dan `sitemap.xml` — dilisensikan di bawah MIT
+License:
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+
+--------------------------------------------------------------------------------
+2. ASET BRAND DAN KONTEN — DILINDUNGI, BUKAN OPEN SOURCE
+--------------------------------------------------------------------------------
+
+MIT License di bagian 1 TIDAK berlaku untuk aset brand berikut:
+
+  - Nama, merek, dan logo "Mew & Brew" (termasuk `favicon.svg` dan
+    `assets/img/logo-mew-brew.png`)
+  - Ilustrasi maskot kucing (mis. `assets/img/kucing-hero.webp`,
+    `assets/img/kucing-rust-mug.png`, `assets/img/kucing-tan-mug.png`)
+  - Desain label produk (seluruh berkas `assets/img/label-*.webp`)
+  - Foto produk (mis. `assets/img/foto-cooler-bag.webp`,
+    `assets/img/foto-tangan-cold-brew.webp`)
+  - Seluruh ilustrasi doodle (`assets/img/doodle-*.webp`)
+  - Seluruh teks, salinan pemasaran, dan harga dalam situs ini
+
+Aset-aset di atas adalah milik Mew & Brew dan dilindungi hak cipta serta hak
+merek. TIDAK ada izin, tersurat maupun tersirat, yang diberikan untuk menyalin,
+memodifikasi, mendistribusikan, mempublikasikan ulang, atau menggunakannya
+untuk keperluan komersial apa pun tanpa izin tertulis terlebih dahulu dari
+Mew & Brew.
+
+Dengan kata lain: kamu boleh memakai dan mempelajari KODENYA, tetapi kamu tidak
+boleh memakai IDENTITAS VISUAL dan MEREK kami.
+
+
+--------------------------------------------------------------------------------
+3. KONTAK PERIZINAN
+--------------------------------------------------------------------------------
+
+Untuk permintaan lisensi aset brand, kerja sama, atau pertanyaan lain:
+
+  WhatsApp: 0812-9598-8816
+  Email:    enpidilabs@gmail.com
+
+
+--------------------------------------------------------------------------------
+Ringkasan singkat (bukan bagian dari lisensi)
+--------------------------------------------------------------------------------
+
+  Kode       → MIT, bebas dipakai (sertakan notice hak cipta)
+  Brand/aset → Proprietary, dilarang dipakai tanpa izin

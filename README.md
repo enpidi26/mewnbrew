@@ -177,7 +177,17 @@ Website ini dibuat oleh **Navid Athallah and Team**.
 - Order via web: [your-domain.com]
 
 ## 📄 License
-© 2026 Mew & Brew. All rights reserved.
+
+Proyek ini memakai lisensi **terpisah untuk kode dan aset brand** — lihat [`LICENSE`](LICENSE) untuk teks lengkap.
+
+| Bagian | Ketentuan |
+|---|---|
+| **Kode sumber** (HTML, CSS, JS, config) | **MIT License** — bebas dipakai, dimodifikasi, dan didistribusikan, dengan menyertakan notice hak cipta |
+| **Aset brand** (logo, nama "Mew & Brew", ilustrasi kucing, label produk, foto produk, teks pemasaran) | **Proprietary** — © 2026 Mew & Brew. Dilarang disalin atau dipakai untuk keperluan komersial tanpa izin tertulis |
+
+Singkatnya: kamu boleh memakai dan mempelajari **kodenya**, tetapi tidak boleh memakai **identitas visual dan merek** Mew & Brew.
+
+Untuk perizinan aset brand atau kerja sama, hubungi WhatsApp [0812-9598-8816](https://wa.me/6281295988816).
 
 ---
 
