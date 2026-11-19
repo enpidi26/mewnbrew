@@ -1,0 +1,41 @@
+{
+  "id": "./",
+  "short_name": "Mew & Brew",
+  "name": "Mew & Brew - Affordable Coffee",
+  "description": "Kopi susu dan cold brew 250 ml, semua Rp10.000. Order untuk harian dan acara.",
+  "lang": "id",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#0C2C3B",
+  "background_color": "#F7F6F1",
+  "orientation": "portrait",
+  "categories": ["food", "shopping"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+Lisensi Mew & Brew
+==================
+
+Copyright (c) 2026 Mew & Brew. Semua hak dilindungi.
+All rights reserved.
+
+Repositori ini bersifat source-available, bukan open source. Kode dapat
+dilihat untuk evaluasi, tetapi tidak ada izin untuk memakai, menyalin,
+memodifikasi, atau mendistribusikannya tanpa izin tertulis dari Mew & Brew.
+
+
+--------------------------------------------------------------------------------
+1. KODE SUMBER, KONFIGURASI, DAN DOKUMENTASI
+--------------------------------------------------------------------------------
+
+Seluruh kode dan konfigurasi dalam repositori ini — termasuk tetapi tidak
+terbatas pada `index.html`, `404.html`, `css/style.css`, `js/main.js`, `sw.js`,
+`manifest.json`, `_headers`, `vercel.json`, `.htaccess`, `robots.txt`,
+`sitemap.xml`, serta dokumentasi — adalah milik Mew & Brew dan dilindungi
+hak cipta.
+
+Tidak ada lisensi, baik tersurat maupun tersirat, yang diberikan kepada
+pihak lain untuk:
+
+  - memakai kode ini di situs, aplikasi, atau layanan lain;
+  - menyalin, memodifikasi, menggabungkan, menerbitkan, atau mendistribusikan;
+  - mensublisensikan, menjual, menyewakan, atau mengomersialkan;
+  - membuat karya turunan.
+
+Yang diperbolehkan tanpa izin tertulis:
+
+  (a) melihat dan membaca source di repositori publik untuk evaluasi pribadi;
+  (b) penggunaan oleh Mew & Brew dan pihak yang telah mendapat izin tertulis;
+  (c) kutipan singkat untuk review atau edukasi dengan atribusi dan tautan
+      ke repositori ini.
+
+Untuk lisensi komersial atau izin penggunaan lain, hubungi penjual di
+WhatsApp 0812-9598-8816.
+
+
+--------------------------------------------------------------------------------
+2. ASET BRAND
+--------------------------------------------------------------------------------
+
+Nama "Mew & Brew", logo, favicon, ikon PWA, gambar OG, ilustrasi kucing,
+label produk, foto produk, teks pemasaran, dan seluruh aset visual brand
+adalah milik Mew & Brew.
+
+Aset brand TIDAK dilisensikan untuk dipakai, disalin, dimodifikasi, atau
+didistribusikan tanpa izin tertulis. Melihat aset di repositori publik tidak
+memberikan hak untuk memakainya di situs, kemasan, iklan, atau produk lain.
+
+
+--------------------------------------------------------------------------------
+3. VERSI SEBELUMNYA
+--------------------------------------------------------------------------------
+
+Kode yang dipublikasikan sebelum 19 November 2026, termasuk commit
+`a898a9f`, tersedia di bawah MIT License. Salinan yang diperoleh dari versi
+tersebut tetap tunduk pada MIT License; lisensi ini tidak mencabut hak yang
+sudah diberikan untuk salinan lama.
+
+Lisensi proprietary ini berlaku untuk versi saat ini dan versi berikutnya.
+Jika kamu memerlukan versi lama, periksa riwayat commit untuk teks lisensi
+yang berlaku pada versi tersebut.
+
+
+--------------------------------------------------------------------------------
+4. PIHAK KETIGA
+--------------------------------------------------------------------------------
+
+Proyek ini memakai:
+
+  - Font Fraunces dan Plus Jakarta Sans melalui Google Fonts, di bawah
+    SIL Open Font License 1.1.
+  - Tidak ada library JavaScript pihak ketiga.
+
+Lisensi pihak ketiga tetap berlaku untuk komponen pihak ketiga.
+
+
+--------------------------------------------------------------------------------
+5. TANPA JAMINAN
+--------------------------------------------------------------------------------
+
+KODE DAN ASET DISEDIAKAN "AS IS", TANPA JAMINAN APA PUN, BAIK TERSURAT
+MAUPUN TERSIRAT, TERMASUK TANPA BATAS JAMINAN KELAYAKAN UNTUK DIPERDAGANGKAN,
+KESESUAIAN UNTUK TUJUAN TERTENTU, DAN TIDAK ADANYA PELANGGARAN. DALAM HAL
+APA PUN PENULIS ATAU PEMEGANG HAK CIPTA TIDAK BERTANGGUNG JAWAB ATAS KLAIM,
+KERUSAKAN, ATAU TANGGUNG JAWAB LAIN, BAIK DALAM KONTRAK, PERBUATAN MELAWAN
+HUKUM, MAUPUN LAINNYA, YANG TIMBUL DARI ATAU BERKAITAN DENGAN KODE ATAU
+PENGGUNAAN KODE TERSEBUT.
+
+
+--------------------------------------------------------------------------------
+6. HUBUNGI
+--------------------------------------------------------------------------------
+
+Untuk perizinan kode, lisensi komersial, penggunaan aset brand, atau
+pertanyaan lain:
+
+  WhatsApp: 0812-9598-8816
+  Pemilik: Mew & Brew
+
+
+--------------------------------------------------------------------------------
+Ringkasan singkat (bukan bagian dari lisensi)
+--------------------------------------------------------------------------------
+
+  Kode versi saat ini  -> proprietary / source-available
+  Kode versi lama      -> MIT, hanya untuk salinan yang sudah diperoleh
+  Aset brand           -> proprietary
+  Repositori publik    -> boleh dilihat, tidak boleh dipakai tanpa izin

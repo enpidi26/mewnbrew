@@ -1,0 +1,26 @@
+Mew & Brew — NOTICE
+===================
+
+Copyright (c) 2026 Mew & Brew. All rights reserved.
+
+Repositori ini source-available, bukan open source. Lihat `LICENSE`.
+
+Lisensi sebelumnya
+------------------
+Kode yang dipublikasikan sebelum 19 November 2026, termasuk commit
+`a898a9f`, dirilis di bawah MIT License. Salinan yang diperoleh dari versi
+tersebut tetap tunduk pada MIT License. Versi saat ini dan berikutnya
+memakai lisensi proprietary di `LICENSE`.
+
+Pihak ketiga
+------------
+- Font Fraunces dan Plus Jakarta Sans dimuat melalui Google Fonts dan
+  dilisensikan di bawah SIL Open Font License 1.1.
+- Tidak ada library JavaScript pihak ketiga.
+
+Canary
+------
+Source ini mengandung penanda canary unik untuk mendeteksi salinan tanpa
+izin. Jika penanda tersebut muncul di situs atau repositori yang bukan milik
+Mew & Brew, itu indikasi salinan tanpa izin. Simpan bukti dan laporkan ke
+host terkait.
