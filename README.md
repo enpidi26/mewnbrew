@@ -150,12 +150,20 @@ Target browsers: current Chrome, Edge, Firefox, and Safari.
 │   └── main.js
 ├── assets/
 │   └── img/
+├── dokumentasi/
+│   ├── thumbnail.png
+│   ├── screenshot-1-beranda.png
+│   ├── screenshot-2-menu.png
+│   ├── screenshot-3-checkout.png
+│   └── LAPORAN.md
 ├── LICENSE
 ├── NOTICE
 ├── TRADEMARK.md
 ├── CHANGELOG.md
 └── README.md
 ```
+
+A public, non-technical project report (Indonesian) is available in [dokumentasi/LAPORAN.md](dokumentasi/LAPORAN.md).
 
 ## License
 
