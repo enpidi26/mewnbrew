@@ -1,194 +1,191 @@
-# Mew & Brew - Website Documentation
+<div align="center">
 
-## Overview
-Website katalog dan pemesanan untuk Mew & Brew - brand kopi susu dan cold brew dengan harga flat Rp10.000 per botol 250 ml. Checkout dikirim ke WhatsApp penjual; tidak ada backend.
+<img src="assets/img/og-mew-brew.png" alt="Mew &amp; Brew" width="720" />
 
-> **Status lisensi:** source-available, bukan open source. Repo ini publik agar source bisa dilihat, tetapi kode tidak boleh dipakai, disalin, dimodifikasi, atau didistribusikan tanpa izin tertulis. Lihat [`LICENSE`](LICENSE) dan [`TRADEMARK.md`](TRADEMARK.md).
+<h1>Mew &amp; Brew</h1>
 
-## Fitur Utama
-- Katalog 7 produk dengan filter Kopsu / Cold Brew
-- Keranjang dengan LocalStorage, batas 999 botol per item, tombol +10, dan tombol kosongkan
-- Form harian / acara, termasuk alamat antar, tanggal acara, dan jenis acara "Lainnya"
-- Nomor pesanan yang terikat pada isi keranjang: bertahan saat refresh, berubah saat isi keranjang berubah
-- Validasi tanggal acara (tidak boleh lampau), alamat antar, dan jenis acara
-- Preview pesan WhatsApp + salin ke clipboard + kirim via WhatsApp
-- PWA: manifest, ikon 192/512 + maskable, service worker, dan app shell offline
-- Responsive mobile-first, mobile nav, skip link, dialog dengan focus trap dan pengembalian fokus
-- Aksesibilitas: ARIA labels, error terhubung ke field, kontras teks diperbaiki, reduced motion
-- Loading state gambar, lazy loading untuk gambar di bawah fold, dan `srcset` belum dipakai
+<p><strong>Affordable coffee for every occasion.</strong><br />
+A mobile-first coffee ordering site with WhatsApp checkout, a flat-price menu, and offline support.</p>
 
-## Teknologi
-- HTML5, CSS3 (custom properties, grid, flexbox, animasi)
-- Vanilla JavaScript, tanpa dependency
-- LocalStorage untuk keranjang, form, dan nomor pesanan
-- WebP/PNG untuk aset
-- Service worker `sw.js` untuk app shell offline
+<p>
+  <img alt="License: proprietary / source-available" src="https://img.shields.io/badge/license-proprietary%2Fsource--available-0C2C3B?style=flat-square" />
+  <img alt="PWA: offline ready" src="https://img.shields.io/badge/PWA-offline--ready-0C2C3B?style=flat-square" />
+  <img alt="Dependencies: none" src="https://img.shields.io/badge/dependencies-none-BA9165?style=flat-square" />
+  <img alt="JavaScript: vanilla" src="https://img.shields.io/badge/JavaScript-vanilla-BA9165?style=flat-square" />
+</p>
 
-## Struktur File
-```
-mewnbrew/
-├── index.html              # Halaman utama
-├── 404.html                # Halaman 404
-├── manifest.json           # Manifest PWA
-├── favicon.svg             # Favicon
-├── sw.js                   # Service worker
-├── _headers                # Header Netlify / Cloudflare Pages
-├── vercel.json             # Header Vercel
-├── .htaccess               # Compression, cache, security untuk Apache
-├── robots.txt
-├── sitemap.xml
-├── LICENSE                 # Lisensi kode + aset brand
-├── NOTICE                  # Lisensi lama, pihak ketiga, canary
-├── TRADEMARK.md            # Notice merek + checklist DJKI
-├── css/style.css
-├── js/main.js
-├── assets/img/             # Label, doodle, foto, ikon PWA, OG image
-└── docs: README, CHANGELOG, DEPLOY, QUICKSTART, SUMMARY
-```
-
-## Setup & Deploy
-
-### Local Development
-1. Clone atau extract project.
-2. Jalankan static server (service worker membutuhkan `http://localhost`, bukan `file://`):
-   ```bash
-   php -S localhost:8000
-   # atau
-   python -m http.server 8000
-   # atau
-   npx http-server -p 8000
-   ```
-3. Buka `http://localhost:8000`.
-
-### Production Deploy
-**Hosting gratis:**
-- Netlify (drag & drop atau GitHub): `_headers` otomatis dipakai.
-- Cloudflare Pages: `_headers` dipakai.
-- Vercel: `vercel.json` dipakai.
-- GitHub Pages: tidak membaca `_headers`/`.htaccess`; header keamanan perlu diatur lewat layanan lain. URL default proyek: `https://enpidi26.github.io/mewnbrew/`.
-
-**Domain custom:**
-1. Deploy.
-2. Ganti semua `https://enpidi26.github.io/mewnbrew/` di `index.html`, `robots.txt`, `sitemap.xml`, dan dokumentasi ini dengan domain akhir.
-3. Pastikan `start_url` dan `scope` di `manifest.json` tetap `./` agar aman di root maupun subfolder.
-4. Aktifkan HTTPS; HSTS di `_headers`/`.htaccess` hanya berlaku di HTTPS.
-
-## Konfigurasi
-
-### Nomor WhatsApp
-File: `js/main.js` baris 8
-```javascript
-const SELLER_WA = "6281295988816"; // format 62xxx, tanpa + dan spasi
-```
-Nomor juga muncul di JSON-LD (`index.html`), footer, dan dokumentasi. Ubah semuanya jika nomor berganti.
-
-### Harga Produk
-File: `js/main.js` baris 10
-```javascript
-const PRICE = 10000;
-```
-Saat halaman dimuat, `syncPrices()` menyamakan `price-pill`, teks hero, marquee, dan `syncJsonLd()` menyamakan `offers.price` di JSON-LD. Kartu HTML menyimpan nilai fallback untuk no-JS/SEO, jadi setelah mengubah `PRICE` sebaiknya ganti juga teks `Rp10.000` statis di `index.html` (cari `Rp10.000`), nilai `offers.price` di JSON-LD, dan meta deskripsi/OG.
-
-### Menu Produk
-File: `js/main.js` baris 18
-```javascript
-const MENU = [
-  // id, group, name, display, script, variant, tag, img, alt, doodle
-];
-```
-`syncCatalog()` membuat kartu untuk item MENU yang belum punya kartu HTML. Untuk kontrol visual penuh (doodle, varian, alt), tetap tambahkan kartu di `index.html`; untuk item baru yang sederhana, cukup tambahkan ke MENU dan kartu akan dibuat otomatis. Item baru tetap perlu ditambahkan manual ke JSON-LD/SEO jika ingin terindeks tanpa JavaScript.
-
-### Cache / Service Worker
-Setiap kali `css/style.css`, `js/main.js`, atau aset inti berubah:
-1. Naikkan `CACHE` di `sw.js` (misalnya `mewnbrew-v1.2.1` → `mewnbrew-v1.2.2`).
-2. Naikkan query versi di `index.html` (`css/style.css?v=...` dan `js/main.js?v=...`) serta daftar `APP_SHELL` di `sw.js`.
-3. Deploy. Browser akan mengambil service worker baru; cache lama dihapus saat activate.
-
-### Nomor Pesanan
-Format: `MB-YYMMDD-HHMM-RRR`. Nomor disimpan di `mewnbrew_order` bersama signature isi keranjang. Nomor tetap selama isi keranjang sama; berubah saat jumlah/item berubah; dihapus saat keranjang dikosongkan.
-
-## Bug Fixes v1.2.0
-- Gambar produk tetap terlihat saat JavaScript mati/gagal (opacity hanya digerbangi `.js`; early init + fallback 4 detik).
-- Nomor pesanan tidak lagi dipakai ulang untuk isi keranjang berbeda; bertahan setelah refresh dan direset saat keranjang kosong.
-- Isi LocalStorage divalidasi: negatif → 0, pecahan → dibulatkan ke bawah, lebih dari 999 → 999.
-- Harga tampilan disinkronkan dari `PRICE`; menu baru di `MENU` otomatis mendapat kartu.
-- Tanggal acara divalidasi (tidak boleh lampau) dan ikut tersimpan.
-- Mode Acara + Antar sekarang meminta alamat dan memasukkannya ke pesan.
-- Jenis acara "Lainnya" punya field teks dan validasi.
-- Error form punya `aria-describedby`, hilang saat field diperbaiki, dan tidak memakai `alert()`.
-- Tombol salin tidak macet di "✓ Disalin!" setelah klik ganda.
-- Catatan WhatsApp tidak lagi mengklaim sukses saat popup diblokir, dan direset saat order berubah.
-- Dialog punya focus trap, mengembalikan fokus, dan membuat background inert/aria-hidden.
-- Tombol +/- di sheet mempertahankan fokus setelah re-render.
-- Tombol +10 dinonaktifkan di 999; indikator maksimum juga muncul di sheet.
-- Foto acara tidak lagi keluar dari kartu (margin `figure` direset).
-- Kartu tidak bertumpuk di layout 3 kolom.
-- Kontras CTA/teks kecil diperbaiki; outline fokus input dikembalikan.
-- PWA dilengkapi service worker, ikon persegi 192/512, maskable, dan `start_url`/`scope` relatif.
-- Open Graph/Twitter/JSON-LD memakai URL absolut, canonical, OG image 1200×630, dan tipe `CafeOrCoffeeShop`.
-- `_headers`/`vercel.json` ditambahkan; `.htaccess` memakai `ErrorDocument 404`, `Options -Indexes`, dan CSP/HSTS/Permissions-Policy.
-- Gambar di bawah fold memakai `loading="lazy"`; cache CSS/JS memakai query versi.
-
-## Browser Support
-- Chrome/Edge 108+
-- Firefox 101+
-- Safari 15.4+
-
-CSS memakai `aspect-ratio`, `dvh`, `inert`, dan `rotate`; browser lama akan kehilangan sebagian tata letak/animasi.
-
-## Performance
-- WebP untuk label/foto; ikon PWA PNG.
-- `loading="lazy"` untuk gambar di bawah fold; hero memakai `fetchpriority="high"`.
-- CSS/JS diberi query versi dan cache panjang; service worker menyajikan app shell saat offline.
-- Label 900×900 masih dipakai untuk kartu kecil; `srcset`/resize adalah optimasi berikutnya.
-
-## Security
-- Tidak ada `eval()` atau `innerHTML` dengan input pembeli; `innerHTML` hanya untuk konstanta menu.
-- Input masuk ke pesan lewat `textContent` dan `encodeURIComponent`.
-- `noopener` untuk WhatsApp/footer link.
-- Header keamanan tersedia di `_headers`, `vercel.json`, dan `.htaccess` (CSP, HSTS, X-Frame-Options, Referrer-Policy, Permissions-Policy).
-- Data form (nama, alamat, lokasi, pembayaran, catatan) disimpan di LocalStorage tanpa expiry; sediakan tombol hapus di browser jika perangkat dipakai bersama.
-
-## SEO
-- Description, canonical, Open Graph, Twitter Card, JSON-LD `CafeOrCoffeeShop` dengan `hasMenu`, `robots.txt`, `sitemap.xml`.
-- OG image: `assets/img/og-mew-brew.png` (1200×630).
-- Ganti URL `https://enpidi26.github.io/mewnbrew/` jika memakai domain lain.
-
-## Testing
-E2E manual/headless yang sudah dijalankan mencakup: katalog, filter, keranjang, clamp LocalStorage, nomor pesanan, validasi tanggal/alamat/Lainnya, persistensi form, fokus dialog, copy ganda, `sentNote`, harga/menu dinamis, layout 375/768/1024, JS-off, PWA offline, SEO, dan 404.
-
-## Support
-Website ini dibuat oleh **Navid Athallah and Team**.
-
-- WhatsApp: 0812-9598-8816
-- Order via web: `https://enpidi26.github.io/mewnbrew/` (ganti jika domain berbeda)
-
-## License & Brand
-
-**Source-available, bukan open source.** Kode saat ini milik Mew & Brew dan tidak dilisensikan untuk dipakai, disalin, dimodifikasi, atau didistribusikan tanpa izin tertulis. Melihat repo publik bukan izin untuk memakai.
-
-| Bagian | Ketentuan |
-|---|---|
-| **Kode & konfigurasi** (HTML, CSS, JS, config) | **Proprietary/source-available** - lihat [`LICENSE`](LICENSE) |
-| **Aset brand** (logo, nama “Mew & Brew”, ilustrasi kucing, label, foto, teks pemasaran, ikon PWA, OG image) | **Proprietary** - lihat [`TRADEMARK.md`](TRADEMARK.md) |
-| **Dokumentasi** | **Proprietary** |
-| **Versi sebelum 19 November 2026** (termasuk commit `a898a9f`) | **MIT**; salinan yang sudah diperoleh tetap MIT |
-
-- Lisensi komersial atau izin penggunaan: WhatsApp 0812-9598-8816.
-- Lisensi baru **tidak mencabut** hak salinan lama yang sudah diperoleh di bawah MIT. Riwayat commit tetap menyimpan versi tersebut.
-- Font Fraunces dan Plus Jakarta Sans dimuat via Google Fonts di bawah SIL Open Font License 1.1; tidak ada library JS pihak ketiga. Lihat [`NOTICE`](NOTICE).
-
-## Brand & Copy Protection
-
-- **Canary:** source ini mengandung penanda unik di `index.html`, CSS, JS, dan service worker. Kalau penanda itu muncul di situs/repo lain, itu indikasi salinan tanpa izin; simpan bukti dan laporkan ke host.
-- **Merek:** daftarkan logo/nama di DJKI (kelas 30/43/35; konsultasikan). Gunakan ™ sampai terdaftar; jangan memakai ® sebelum sertifikat terbit. Checklist ada di [`TRADEMARK.md`](TRADEMARK.md).
-- **Aset master:** simpan file sumber logo/ilustrasi/foto; publikasikan versi teroptimasi/berwatermark. Repo publik tetap menampilkan aset yang di-commit.
-- **Monitoring:** pantau GitHub code search, Google, dan reverse image search. Kirim takedown ke GitHub/Netlify/Cloudflare/host lain; simpan bukti sebelum menegur.
-- **Kepemilikan:** pastikan Mew & Brew memegang hak cipta kode. Kalau ada tim/freelancer, siapkan IP assignment/NDA.
-- **Batas teknis:** repo publik berarti kode bisa dibaca dan disalin; lisensi memberi dasar hukum, bukan pencegahan teknis. Jangan menaruh rahasia dagang di kode frontend.
+</div>
 
 ---
 
-**Version:** 1.2.1
+## Contents
 
-**Last Updated:** November 2026
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Configuration](#configuration)
+- [Deployment](#deployment)
+- [PWA and Offline](#pwa-and-offline)
+- [Accessibility and Performance](#accessibility-and-performance)
+- [Project Structure](#project-structure)
+- [License](#license)
+- [Contributing](#contributing)
+- [Contact](#contact)
+- [Credits](#credits)
+
+## Overview
+
+Mew & Brew is an Indonesian coffee brand selling kopi susu and cold brew in 250 ml bottles at a flat **Rp10.000** per bottle. This repository contains the brand's ordering website: customers build a cart, choose pickup or delivery for a daily or event order, and send the final order to the seller on WhatsApp.
+
+The site is a static application. There is no backend, database, or build step. All cart and form state stays in the browser; checkout is a structured WhatsApp message that the seller confirms manually.
+
+## Features
+
+- Seven-product menu with **Kopsu** and **Cold Brew** filters
+- Cart with LocalStorage persistence, quick quantities, a 999-bottle cap, and a clear-cart action
+- Order numbers tied to the current cart contents, preserved across refreshes
+- Daily and event order forms with delivery address, event date, venue, and a custom event type
+- WhatsApp message preview, copy-to-clipboard, and direct WhatsApp checkout
+- Responsive, mobile-first layout with a mobile navigation strip
+- Installable PWA with an offline app shell and cached catalog assets
+- Accessible checkout dialog with keyboard focus management and connected field errors
+- Reduced-motion support and a contrast-checked color system
+- No JavaScript dependencies and no build tooling
+
+## Tech Stack
+
+| Layer | Details |
+| --- | --- |
+| Frontend | Semantic HTML5, modern CSS (custom properties, Grid, Flexbox), vanilla JavaScript |
+| State | `localStorage` for cart, form data, and the active order number |
+| Checkout | WhatsApp deep link (`wa.me`) |
+| PWA | Web App Manifest and a versioned service worker |
+| Build | None — serve the directory as-is |
+| Hosting | Any static host |
+
+## Getting Started
+
+Clone the repository and serve the directory with any static file server.
+
+```bash
+git clone https://github.com/enpidi26/mewnbrew.git
+cd mewnbrew
+
+# Python 3
+python3 -m http.server 8000
+
+# or Node.js
+npx serve .
+```
+
+Open [http://localhost:8000](http://localhost:8000).
+
+> The service worker requires a secure context. Use `http://localhost` for development or HTTPS in production. Opening `index.html` directly with `file://` works for the layout but will not register the PWA.
+
+No package installation or build step is required.
+
+## Configuration
+
+| Setting | Location | Notes |
+| --- | --- | --- |
+| Seller WhatsApp number | `SELLER_WA` in `js/main.js` | International format, digits only (e.g. `62812...`). |
+| Price per bottle | `PRICE` in `js/main.js` | Runtime price display is synchronized from this value. Update the static fallback, meta tags, and JSON-LD when the price changes. |
+| Menu | `MENU` in `js/main.js` | New items receive a card automatically. The static HTML remains the no-JS and SEO baseline. |
+| Canonical / social URLs | `index.html`, `robots.txt`, `sitemap.xml` | Update for the final domain before deployment. |
+| Cache version | `CACHE` in `sw.js` and `?v=` on CSS/JS in `index.html` | Bump both together after changing core assets. |
+
+The public menu data, static fallback cards, and structured data should stay consistent when the catalog changes.
+
+## Deployment
+
+The site can be deployed to any static host.
+
+| Host | Configuration |
+| --- | --- |
+| Netlify / Cloudflare Pages | `_headers` |
+| Vercel | `vercel.json` |
+| Apache | `.htaccess` |
+| GitHub Pages | Static files only; custom headers are not supported |
+
+Use HTTPS in production. The service worker and install prompt require a secure context. After changing `css/style.css`, `js/main.js`, or core assets, bump the cache version and the asset query string so returning visitors receive the new build.
+
+## PWA and Offline
+
+The service worker caches the application shell, core catalog images, and icons. Navigation falls back to the cached `index.html` when the network is unavailable, so the catalog remains viewable offline. Checkout still requires a network connection to WhatsApp.
+
+- Manifest: `manifest.json`
+- Service worker: `sw.js`
+- Icons: `assets/img/icon-192.png`, `assets/img/icon-512.png`, `assets/img/icon-maskable-512.png`
+- Apple touch icon: `assets/img/apple-touch-icon.png`
+
+## Accessibility and Performance
+
+- Keyboard-operable dialog with focus trapping and focus restoration
+- ARIA labels, live announcements, and field errors connected through `aria-describedby`
+- Reduced-motion handling for animations and scroll behavior
+- Contrast-checked text and focus states
+- Lazy loading for below-the-fold images and WebP product assets
+- No JavaScript frameworks or third-party runtime dependencies
+- Cache-busted CSS and JavaScript for safe long-term caching
+
+Target browsers: current Chrome, Edge, Firefox, and Safari.
+
+## Project Structure
+
+```text
+.
+├── index.html
+├── 404.html
+├── manifest.json
+├── sw.js
+├── _headers
+├── vercel.json
+├── .htaccess
+├── robots.txt
+├── sitemap.xml
+├── css/
+│   └── style.css
+├── js/
+│   └── main.js
+├── assets/
+│   └── img/
+├── LICENSE
+├── NOTICE
+├── TRADEMARK.md
+├── CHANGELOG.md
+└── README.md
+```
+
+## License
+
+This project is **source-available, not open source**. The source is public for review, but no permission is granted to use, copy, modify, or distribute the code or brand assets without written permission.
+
+| Component | Terms |
+| --- | --- |
+| Source code and configuration | Proprietary / source-available |
+| Brand assets (name, logo, illustrations, labels, photos, PWA icons, social image) | Proprietary |
+| Releases published before 19 November 2026 | MIT; copies already obtained remain MIT |
+
+See [LICENSE](LICENSE) for the binding terms and [TRADEMARK.md](TRADEMARK.md) for the brand policy.
+
+For commercial licensing or brand permission, contact the seller on WhatsApp: [0812-9598-8816](https://wa.me/6281295988816).
+
+## Contributing
+
+This is a proprietary, source-available project. External contributions are not accepted without a prior written agreement. For collaboration or licensing, use the contact below.
+
+## Contact
+
+- WhatsApp: [0812-9598-8816](https://wa.me/6281295988816)
+- Repository: [github.com/enpidi26/mewnbrew](https://github.com/enpidi26/mewnbrew)
+
+## Credits
+
+Built by **Navid Athallah and Team**.
+
+Typography: Fraunces and Plus Jakarta Sans, served via Google Fonts under the SIL Open Font License 1.1.
+
+---
+
+**Current release:** v1.2.1 · [Changelog](CHANGELOG.md)
