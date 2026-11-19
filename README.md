@@ -83,7 +83,7 @@ Open [http://localhost:8000](http://localhost:8000).
 
 > The service worker requires a secure context. Use `http://localhost` for development or HTTPS in production. Opening `index.html` directly with `file://` works for the layout but will not register the PWA.
 
-No package installation or build step is required.
+No build step is required.
 
 ## Configuration
 
@@ -126,7 +126,7 @@ The service worker caches the application shell, core catalog images, and icons.
 - Reduced-motion handling for animations and scroll behavior
 - Contrast-checked text and focus states
 - Lazy loading for below-the-fold images and WebP product assets
-- No JavaScript frameworks or third-party runtime dependencies
+- No JavaScript frameworks or bundled third-party libraries
 - Cache-busted CSS and JavaScript for safe long-term caching
 
 Target browsers: current Chrome, Edge, Firefox, and Safari.
