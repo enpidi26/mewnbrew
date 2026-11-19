@@ -167,7 +167,7 @@ This project is **source-available, not open source**. The source is public for 
 | Brand assets (name, logo, illustrations, labels, photos, PWA icons, social image) | Proprietary |
 | Releases published before 19 November 2026 | MIT; copies already obtained remain MIT |
 
-See [LICENSE](LICENSE) for the binding terms and [TRADEMARK.md](TRADEMARK.md) for the brand policy.
+See [LICENSE](LICENSE) for the binding terms and [TRADEMARK.md](TRADEMARK.md) for the brand policy. Third-party notices are in [NOTICE](NOTICE).
 
 For commercial licensing or brand permission, contact the seller on WhatsApp: [0812-9598-8816](https://wa.me/6281295988816).
 
